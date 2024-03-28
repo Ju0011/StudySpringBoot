@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.rog//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.Ju00.mappers.TripMapper">
+    <select id="findAll" resultType="org.Ju00.domain.Trip">
+        select * from trip
+    </select>
+    <select id="findByOrigin" parameterType="string"
+            resultType="org.Ju00.domain.Trip">
+        select * from trip <where>origin =#{origin}</where>
+    </select>
+
+    <insert id = "addTrip" parameterType="org.Ju00.domain.Trip">
+        insert into trip (destiantion, origin)
+        values             (#{destination}, #{origin})
+    </insert>
+
+    <delete id="deleteTrip" parameterType="int">
+        delete from Trip <where>id = #{id}</where>
+    </delete>
+
+    <update id= "updateTrip" parameterType="org.Ju00.domain.Trip">
+        update Trip set origin=#{origin}, destination =#{destination}
+        <where> id = #{id}</where>
+    </update>
+
+</mapper>
